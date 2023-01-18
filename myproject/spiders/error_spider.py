@@ -3,7 +3,7 @@ import scrapy
 
 class ErrorSpider(scrapy.Spider):
     name = "error_spider"
-    start_urls = ["https://www.votpusk.ru/"]
+    start_urls = ["https://www.votpusk.ru/train"]
 
     def parse(self, response):
         if response.status == 404:
