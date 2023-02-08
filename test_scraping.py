@@ -14,7 +14,7 @@ def driver():
 
 
 @pytest.mark.parametrize("tracking_number", [
-    "EE064523226RU",
+    "eE064523226RU",
     "ASO2501GB02775299501",
     "LC566539063CN",
     "UT096870916NL",
