@@ -49,7 +49,7 @@ def test_tracking_number(driver, tracking_number):
                 (By.XPATH, '//*[@id="widgetContentMain"]/section/div/div/div[2]'))
         )
         tracking_info_text = tracking_info.text
-        slack_webhook_url1 = "https://hooks.slack.com/services/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"
+        slack_webhook_url1 = "https://hooks.slack.com/services/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"
         requests.post(slack_webhook_url1,
                       json={
                           "text": f"Tracking number: {tracking_number}\nTracking information: {tracking_info_text}"})
@@ -61,7 +61,7 @@ def test_tracking_number(driver, tracking_number):
         not_found_message_text = not_found_message.text
         alternate_site_url = f"https://1trackapp.com/en/track/{tracking_number}"
         requests.get(alternate_site_url)
-        slack_webhook_url2 = "https://hooks.slack.com/services/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"
+        slack_webhook_url2 = "https://hooks.slack.com/services/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"
         requests.post(slack_webhook_url2,
                       json={"text": f"Tracking number: {tracking_number}\nInformation :"
                                     f"Not found on research site {alternate_site_url}\nNot found :"
