@@ -2,6 +2,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.common.exceptions import TimeoutException
 
 
 def do_click(driver, by_locator):
@@ -74,3 +75,13 @@ def assert_text_visible(driver, text):
     except Exception as e:
         print(f"Error: {e}")
         raise AssertionError(f"Text '{text}' is not visible on the page")
+
+
+def wait_until_element_loaded(driver, locator, timeout=20):
+    try:
+        element = WebDriverWait(driver, timeout).until(
+            EC.visibility_of_element_located(locator)
+        )
+        assert element.is_displayed(), f"Элемент {locator} не виден на странице"
+    except TimeoutException:
+        assert False, f"Элемент {locator} не найден на странице после {timeout} секунд ожидания"

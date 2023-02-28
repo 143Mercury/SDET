@@ -95,28 +95,74 @@ trains = (By.LINK_TEXT, "ЖД Билеты")
 routs = (By.LINK_TEXT, "Маршруты")
 attractions = (By.LINK_TEXT, "Достопримечательности")
 
-sliders1 = (By.CSS_SELECTOR, '[alt="в Адыгею"]')
-sliders2 = (By.CSS_SELECTOR, '[alt="на Байкал"]')
-slider3 = (By.CSS_SELECTOR, '[alt="в Дагестан"]')
+adigay = (By.CSS_SELECTOR, '[alt="в Адыгею"]')
+baikal = (By.CSS_SELECTOR, '[alt="на Байкал"]')
+dagestan = (By.CSS_SELECTOR, '[alt="в Дагестан"]')
+
+slider_container = (By.XPATH, '/html/body/section[5]/div')
 slider4 = (By.CSS_SELECTOR, '[alt="в Карелию"]')
 slider5 = (By.CSS_SELECTOR, '[alt="на Кавказ"]')
 slider6 = (By.CSS_SELECTOR, '[alt="в Сочи"]')
 sliders_arrowR = (By.XPATH, '/html/body/section[5]/div/div/div/div[1]/div[3]')
-sliders_arrowL =(By.XPATH, '/html/body/section[5]/div/div/div/div[1]/div[2]')
+sliders_arrowL = (By.XPATH, '/html/body/section[5]/div/div/div/div[1]/div[2]')
+slider_arrow = (By.XPATH, '/html/body/section[5]/div/div/div/div[2]/div[3]')
+tour_switcher = (By.CSS_SELECTOR, '[class="tours__switcher"]')
 
+egypt = (By.LINK_TEXT, 'в Египет')
+spain = (By.CSS_SELECTOR, 'alt="в Испанию"')
+italy = (By.CSS_SELECTOR, 'alt="в Италию"')
+tour_order = (By.XPATH, '/html/body/section[5]/div/div/div/div[5]/a/span')
 
+slider_arrow3 = (By.CSS_SELECTOR, '[class="swiper-button-next articles__slider_next"]')
+slider_arrow4 = (By.CSS_SELECTOR, '[class="swiper-button-prev articles__slider_prev"]')
 
+country_container = (By.ID, 'select2-country-container')
+city_container = (By.ID,  'select2-city-container')
+theme_container = (By.ID, 'select2-theme-container')
 
+submit_button = (By.CSS_SELECTOR, '[class="articles__search-btn"]')
+link_text = (By.CSS_SELECTOR, 'class="articles__order"')
 
+slider_next = (By.CSS_SELECTOR, '[class="swiper-button-next places__slider_next"]')
+slider_prev = (By.CSS_SELECTOR, '[class="swiper-button-prev places__slider_prev"]')
+attractions_link = (By.XPATH, '/html/body/section[7]/div/div[2]/a/span')
 
+praga = (By.CSS_SELECTOR, '[alt="Отели в Венеции"]')
+hotel_slider_next = (By.CSS_SELECTOR, '[class="swiper-button-next hotels__slider_next"]')
+hotel_slider_prev = (By.CSS_SELECTOR, '[class="swiper-button-prev hotels__slider_prev"]')
+hotel_link_text = (By.XPATH, '/html/body/section[8]/div/div/div/div[2]/a/span')
 
+slider_train_prev = (By.CSS_SELECTOR, '[class="swiper-button-prev tickets__slider_prev"]')
+slider_train_next = (By.CSS_SELECTOR, '[class="swiper-button-next tickets__slider_next"]')
+train_link_text = (By.XPATH, '/html/body/section[9]/div/div/div/div[2]/a/span')
 
+news = (By.CSS_SELECTOR, '[alt="«Аэрофлот» в 6 раз увеличит количество рейсов на линии Москва – Анталья"]')
+news1 = (By.XPATH, '/html/body/article/div/section[1]/div[1]/div[1]/h4/a')
+news2 = (By.XPATH, '/html/body/article/div/section[1]/div[1]/div[3]/h4/a')
+news3 = (By.XPATH, '/html/body/article/div/section[1]/div[1]/div[4]/h4/a')
+news4 = (By.CSS_SELECTOR, '[alt="В Казахстане среди туристов вновь лидируют россияне"]')
+news_link_text = (By.XPATH, '/html/body/article/div/section[1]/div[2]/a/span')
+photo1 = (By.XPATH, '/html/body/article/div/section[2]/div[1]/div[1]/a/picture/img')
+photo2 = (By.XPATH, '/html/body/article/div/section[2]/div[1]/div[2]/a/picture/img')
+photo3 = (By.XPATH, '/html/body/article/div/section[2]/div[1]/div[3]/a/picture/img')
+photo_link_text = (By.XPATH, '/html/body/article/div/section[2]/div[3]/a/span')
+koleydoskop1 = (By.XPATH, '/html/body/article/div/section[3]/div[1]/div[1]/a/picture/img')
+koleydoskop2 = (By.XPATH, '/html/body/article/div/section[3]/div[1]/div[2]/a/picture/img')
+koleydoskop3 = (By.XPATH, '/html/body/article/div/section[3]/div[1]/div[3]/a/picture/img')
+koleydoskop_link_text = (By.XPATH, '/html/body/article/div/section[3]/div[3]/a/span')
 
+other_delay_avia = (By.CSS_SELECTOR, '[alt="Авиабилеты"]')
+other_delay_attract = (By.CSS_SELECTOR, '[alt="Экскурсии"]')
+other_delay_insurance = (By.CSS_SELECTOR, '[alt="Страховки"]')
+other_delay_transfer = (By.CSS_SELECTOR, '[alt="Трансферы"]')
+other_delay_bus = (By.CSS_SELECTOR, '[alt="Автобусы"]')
+other_delay_rent = (By.CSS_SELECTOR, '[alt="Аренда авто"]')
 
+review_head1 = (By.XPATH, '//*[@id="swiper-wrapper-9e4bb355ed3a8d5e"]/div[7]/div[1]')
+review_head2 = (By.XPATH, '//*[@id="swiper-wrapper-9e4bb355ed3a8d5e"]/div[6]/div[1]')
+review_head3 = (By.XPATH, '//*[@id="swiper-wrapper-9e4bb355ed3a8d5e"]/div[5]/div[1]')
+comment_arrowR = (By.CSS_SELECTOR, '[class="swiper-button-next reviews__slider_next"]')
+comment_arrowL = (By.CSS_SELECTOR, '[class="swiper-button-prev reviews__slider_prev"]')
 
-
-
-
-
-
+comment_button = (By.CSS_SELECTOR, '[class="reviews__btn"]')
 

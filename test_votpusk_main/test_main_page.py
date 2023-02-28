@@ -33,9 +33,9 @@ def test_tour_rus(driver):
     methods.do_click(driver, css_sl.type_attractions)
     driver.implicitly_wait(3)
     assert attractions_checkbox.is_enabled(), "Тип туров был не выбран"
-# Форма выбора даты
+    # Форма выбора даты
     calendar_icon = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable(css_sl. click_on_calendar)
+        EC.element_to_be_clickable(css_sl.click_on_calendar)
     )
     methods.do_double_click(driver, css_sl.click_on_calendar)
     assert calendar_icon.is_enabled(), "Календарь не открылся"
@@ -45,7 +45,7 @@ def test_tour_rus(driver):
     )
     methods.do_click(driver, css_sl.click_on_calendar2)
     assert calendar_icon2.is_enabled(), "Календарь-2 не открылся "
-    methods.do_click(driver, css_sl. pick_the_data2)
+    methods.do_click(driver, css_sl.pick_the_data2)
 
     accept_button = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable(css_sl.displayed_button)
@@ -62,13 +62,13 @@ def test_tour_world(driver):
     choose_option = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable(css_sl.chose_option)
     )
-    methods.do_click(driver, css_sl. chose_option)
+    methods.do_click(driver, css_sl.chose_option)
     assert choose_option.is_enabled() \
            and choose_option.is_displayed(), "Кнопка смены опции вида тура не доступна и не встроена "
     where = WebDriverWait(driver, 10).until(
         EC.visibility_of_element_located(css_sl.where)
     )
-    methods.do_send_keys(driver, css_sl. where, "Москва")
+    methods.do_send_keys(driver, css_sl.where, "Москва")
     assert where.is_enabled(), "Поле ввода не доступна"
     WebDriverWait(driver, 5).until(
         EC.element_to_be_clickable(css_sl.list_destinations)
@@ -174,7 +174,7 @@ def test_form_hotel(driver):
         EC.element_to_be_clickable(css_sl.hotel_dropdown)
     )
     assert dropdown.is_enabled(), "Дропдаун отелей не активный"
-    methods.do_click(driver, css_sl. hotel_dropdown)
+    methods.do_click(driver, css_sl.hotel_dropdown)
     add_guests = WebDriverWait(driver, 5).until(
         EC.element_to_be_clickable(css_sl.add_guests)
     )
@@ -188,7 +188,7 @@ def test_form_hotel(driver):
     assert dropdown_kids.is_enabled(), "Выпадающий список выбора кол-тва детей отсутствует"
     methods.do_click(driver, css_sl.dropdown_kids_option)
     add_kids = WebDriverWait(driver, 5).until(
-        EC.visibility_of_element_located(css_sl. add_kids)
+        EC.visibility_of_element_located(css_sl.add_kids)
     )
     assert add_kids.is_enabled(), "Функция добавления кол-тва детей не активна"
     methods.do_click(driver, css_sl.add_kids)
@@ -204,11 +204,11 @@ def test_form_hotel(driver):
 def test_form_train(driver):
     driver.get(configuration.URL)
     driver.execute_script("window.scrollBy(0, 175)")
-# Проверка формы поиска билетов
+    # Проверка формы поиска билетов
     train_sign = WebDriverWait(driver, 5).until(
         EC.element_to_be_clickable(css_sl.train_sign)
     )
-    assert train_sign.is_enabled()\
+    assert train_sign.is_enabled() \
            and train_sign.is_displayed(), "Кнопка перехода к функциям жд билеты не активна или не кликабельна"
 
     methods.do_click(driver, css_sl.train_sign)
@@ -298,7 +298,7 @@ def test_routs_form(driver):
     submit_button = WebDriverWait(driver, 5).until(
         EC.element_to_be_clickable(css_sl.routs_submit)
     )
-    assert submit_button.is_displayed()\
+    assert submit_button.is_displayed() \
            and submit_button.is_enabled(), "Кнопка отсутствует или не кликабельна"
     methods.do_click(driver, css_sl.routs_submit)
 
@@ -398,9 +398,381 @@ def test_motion_links(driver):
 def test_sliders(driver):
     driver.get(configuration.URL)
     driver.execute_script('window.scrollBy(0, 550)')
-    driver.implicitly_wait(3)
 
-    slider = WebDriverWait(driver, 10).until(
-        EC.visibility_of_element_located(css_sl.sliders1)
+    adigay = WebDriverWait(driver, 10).until(
+        EC.visibility_of_element_located(css_sl.adigay)
     )
-    assert slider.is_displayed(), "Один из элементов слайдера не активный"
+    assert adigay.is_enabled(), "Один из элементов слайдера не активный"
+
+    baikal = WebDriverWait(driver, 10).until(
+        EC.visibility_of_element_located(css_sl.baikal)
+    )
+    assert baikal.is_enabled(), "Один из слайдеров 'Туры' не активный"
+
+    dagestan = WebDriverWait(driver, 10).until(
+        EC.visibility_of_element_located(css_sl.dagestan)
+    )
+    assert dagestan.is_enabled(), "Ошибка слайдера в блоке 'Туры'"
+
+    next_arrow = WebDriverWait(driver, 10).until(
+        EC.element_to_be_clickable(css_sl.sliders_arrowR)
+    )
+    assert next_arrow.is_enabled(), "Навигационная стрелка не присутствует либо не кликабельна"
+    methods.do_click(driver, css_sl.sliders_arrowR)
+    back_arrow = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable(css_sl.sliders_arrowL)
+    )
+    assert back_arrow.is_displayed(), "Навигационная стрелка отсутствует"
+    methods.do_click(driver, css_sl.sliders_arrowL)
+
+    tour_switcher = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable(css_sl.tour_switcher)
+    )
+    assert tour_switcher.is_enabled(), "Смена туров не активна либо не кликабельна"
+    methods.do_click(driver, css_sl.tour_switcher)
+
+    WebDriverWait(driver, 5)
+
+    next_arrow = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable(css_sl.slider_arrow)
+    )
+    assert next_arrow.is_displayed(), "Навигационная стрелка отсутствует"
+    for i in range(3):
+        methods.do_click(driver, next_arrow)
+
+    order_tour = WebDriverWait(driver, 5).until(
+        EC.presence_of_element_located(css_sl.tour_order)
+    )
+    assert order_tour.is_displayed(), "Навигационная ссылка заказать тур отсутствует"
+
+
+@pytest.mark.sanity()
+def test_sliders_article(driver):
+    driver.get(configuration.URL)
+    driver.execute_script('window.scrollBy(0, 1175)')
+    time.sleep(3)
+
+    displayed_arrow = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable(css_sl.slider_arrow3)
+    )
+    assert displayed_arrow.is_displayed(), "Стрелка не активна"
+    for i in range(3):
+        time.sleep(1)
+        displayed_arrow.click()
+
+    WebDriverWait(driver, 5)
+    displayed_arrow_back = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable(css_sl.slider_arrow4)
+    )
+    assert displayed_arrow_back.is_displayed(), "Стрелка не активна"
+    for i in range(3):
+        time.sleep(1)
+        displayed_arrow_back.click()
+
+    country_container = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable(css_sl.country_container)
+    )
+    assert country_container.is_enabled(), "Контейнер не активный"
+    methods.do_click(driver, css_sl.country_container)
+    try:
+        driver.execute_script("window.scrollBy(0,325)")
+        time.sleep(3)
+        action = ActionChains(driver)
+        enter_pressed = False
+        while True:
+            action.send_keys(Keys.DOWN).perform()
+            time.sleep(0.5)
+            if not country_container.is_displayed():
+                break
+            if random.randint(1, 10) == 4:
+                time.sleep(random.uniform(0.5, 2.0))
+                action.send_keys(Keys.ENTER).perform()
+                enter_pressed = True
+                break
+        if enter_pressed:
+            country_container.send_keys(Keys.ESCAPE)
+    except:
+        city_container = WebDriverWait(driver, 5).until(
+            EC.element_to_be_clickable(css_sl.city_container)
+        )
+        assert city_container.is_displayed(), "Выпадающий список не активный"
+        methods.do_click(driver, css_sl.city_container)
+        try:
+            action = ActionChains(driver)
+            enter_pressed = False
+            while True:
+                action.send_keys(Keys.DOWN).perform()
+                time.sleep(0.5)
+                if not city_container.is_displayed():
+                    break
+                if random.randint(1, 5) == 2:
+                    time.sleep(random.uniform(0.5, 2.0))
+                    action.send_keys(Keys.ENTER).perform()
+                    enter_pressed = True
+                    break
+            if enter_pressed:
+                city_container.send_keys(Keys.ESCAPE)
+        except:
+            theme_container = WebDriverWait(driver, 5).until(
+                EC.element_to_be_clickable(css_sl.theme_container)
+            )
+            assert theme_container.is_displayed(), "Контейнер 'Темы' не активна"
+            methods.do_click(driver, css_sl.theme_container)
+            action = ActionChains(driver)
+            enter_pressed = False
+            while True:
+                action.send_keys(Keys.DOWN).perform()
+                time.sleep(0.5)
+                if not theme_container.is_displayed():
+                    break
+                if random.randint(1, 5) == 2:
+                    time.sleep(random.uniform(0.5, 2.0))
+                    action.send_keys(Keys.ENTER)
+                    enter_pressed = True
+                    break
+            if enter_pressed:
+                driver.execute_script("window.stop()")
+            else:
+                methods.assert_text_visible(driver, css_sl.link_text)
+                submit_button = WebDriverWait(driver, 5).until(
+                    EC.element_to_be_clickable(css_sl.submit_button)
+                )
+                assert submit_button.is_displayed() \
+                       and submit_button.is_enabled(), "Кнопка не активна либо нек кликабельна"
+                methods.do_click(driver, css_sl.submit_button)
+
+
+@pytest.mark.sanity()
+def test_sliders_attractions(driver):
+    driver.get(configuration.URL)
+    driver.execute_script("window.scrollBy(0,1750)")
+
+    slider_next = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable(css_sl.slider_next)
+    )
+    assert slider_next.is_displayed(), "Навигационная стрелка не активна"
+    for i in range(3):
+        time.sleep(1)
+        slider_next.click()
+
+    slider_prev = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable(css_sl.slider_prev)
+    )
+    assert slider_prev.is_displayed(),\
+        "Навигационная стрелка достопримечательностей отсутствует"
+    for i in range(3):
+        time.sleep(1)
+        slider_prev.click()
+
+    attractions_link = WebDriverWait(driver, 3).until(
+        EC.visibility_of_element_located(css_sl.attractions_link)
+    )
+    assert attractions_link.is_enabled(),\
+        "Навигационная ссылка 'Все достопримечательности'не доступна"
+
+
+@pytest.mark.sanity()
+def test_slider_hotel(driver):
+    driver.get(configuration.URL)
+
+    driver.execute_script("window.scrollBy(0,2150)")
+    hotel_arrow_next = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable(css_sl.hotel_slider_next)
+    )
+    assert hotel_arrow_next.is_displayed(), "Навигационная стрелка отсутствует"
+    for i in range(5):
+        time.sleep(1)
+        hotel_arrow_next.click()
+
+    hotel_arrow_prev = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable(css_sl.hotel_slider_prev)
+    )
+    assert hotel_arrow_prev.is_displayed(), "Навигационная стрелка отсутствует"
+    for i in range(5):
+        time.sleep(1)
+        hotel_arrow_prev.click()
+    else:
+        hotel_link = WebDriverWait(driver, 5).until(
+            EC.presence_of_element_located(css_sl.hotel_link_text)
+        )
+        assert hotel_link.is_displayed()\
+               and hotel_link.is_enabled(), "Навигационная ссылка отсутствует или не кликабельна"
+
+
+@pytest.mark.sanity()
+def test_slider_train(driver):
+    driver.get(configuration.URL)
+    driver.execute_script("window.scrollBy(0,2550)")
+
+    slider_train_next = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable(css_sl.slider_train_next)
+    )
+    assert slider_train_next.is_displayed(), "Test might be fallen"
+    for i in range(5):
+        time.sleep(1)
+        slider_train_next.click()
+
+    slider_train_prev = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable(css_sl.slider_train_prev)
+    )
+    assert slider_train_prev.is_displayed()\
+           and slider_train_prev.is_enabled(), "Навигационная стрелка отсутствует"
+    for i in range(5):
+        time.sleep(1)
+        slider_train_prev.click()
+    else:
+        train_link = WebDriverWait(driver, 5).until(
+            EC.presence_of_element_located(css_sl.train_link_text)
+        )
+        assert train_link.is_displayed(),"Навигационная ссылка не активна"
+
+
+@pytest.mark.sanity()
+def test_slider_train(driver):
+    driver.get(configuration.URL)
+    driver.execute_script("window.scrollBy(0,3525)")
+
+    news = WebDriverWait(driver, 5).until(
+        EC.visibility_of_element_located(css_sl.news)
+    )
+    assert news.is_displayed(), "один из элементов блока 'новости' не активный"
+    news1 = WebDriverWait(driver, 5).until(
+        EC.visibility_of_element_located(css_sl.news1)
+    )
+    assert news1.is_displayed(), "один из элементов блока 'новости' не активный"
+
+    news2 = WebDriverWait(driver, 5).until(
+        EC.visibility_of_element_located(css_sl.news2)
+    )
+    assert news2.is_displayed(), "один из элементов блока 'новости' не активный"
+    news3 = WebDriverWait(driver, 5).until(
+        EC.visibility_of_element_located(css_sl.news3)
+    )
+    assert news3.is_displayed(), "один из элементов блока 'новости' не активный"
+
+    news4 = WebDriverWait(driver, 5).until(
+        EC.visibility_of_element_located(css_sl.news4)
+    )
+    assert news4.is_displayed(), "один из элементов блока 'новости' не активный"
+
+    news_link_text = WebDriverWait(driver, 5).until(
+        EC.presence_of_element_located(css_sl.news_link_text)
+    )
+    assert news_link_text.is_displayed(), "Навигационная ссылка не активна"
+
+    photo1 = WebDriverWait(driver, 5).until(
+        EC.visibility_of_element_located(css_sl.photo1)
+    )
+    assert photo1.is_displayed(), "один из элементов блока 'новости' не активный"
+
+    photo2 = WebDriverWait(driver, 5).until(
+        EC.visibility_of_element_located(css_sl.photo2)
+    )
+    assert photo2.is_displayed(), "один из элементов блока 'новости' не активный"
+
+    photo3 = WebDriverWait(driver, 5).until(
+        EC.visibility_of_element_located(css_sl.photo3)
+    )
+    assert photo3.is_displayed(), "один из элементов блока 'новости' не активный"
+
+    photo_link_text = WebDriverWait(driver, 5).until(
+        EC.presence_of_element_located(css_sl.news_link_text)
+    )
+    assert photo_link_text.is_displayed(), "Навигационная ссылка не активна"
+
+    koleydoskop1 = WebDriverWait(driver, 5).until(
+        EC.visibility_of_element_located(css_sl.koleydoskop1)
+    )
+    assert koleydoskop1.is_displayed(), "один из элементов блока 'новости' не активный"
+
+    koleydoskop2 = WebDriverWait(driver, 5).until(
+        EC.visibility_of_element_located(css_sl.koleydoskop2)
+    )
+    assert koleydoskop2.is_displayed(), "один из элементов блока 'новости' не активный"
+
+    koleydoskop3 = WebDriverWait(driver, 5).until(
+        EC.visibility_of_element_located(css_sl.koleydoskop3)
+    )
+    assert koleydoskop3.is_displayed(), "один из элементов блока 'новости' не активный"
+
+    koleydoskop_link_text = WebDriverWait(driver, 5).until(
+        EC.presence_of_element_located(css_sl.koleydoskop_link_text)
+    )
+    assert koleydoskop_link_text.is_displayed(), "Навигационная ссылка не активна"
+
+
+@pytest.mark.sanity()
+def test_slider_train(driver):
+    driver.get(configuration.URL)
+    driver.execute_script("window.scrollBy(0,3975)")
+
+    other_delay_avia = WebDriverWait(driver, 5).until(
+        EC.visibility_of_element_located(css_sl.other_delay_avia)
+    )
+    other_delay_avia.is_displayed(), "Услуга авиа-перелёты не активна"
+
+    other_delay_attract = WebDriverWait(driver, 5).until(
+        EC.visibility_of_element_located(css_sl.other_delay_attract)
+    )
+    other_delay_attract.is_displayed(), "Услуга авиа-перелёты не активна"
+
+    other_delay_insurance = WebDriverWait(driver, 5).until(
+        EC.visibility_of_element_located(css_sl.other_delay_insurance)
+    )
+    other_delay_insurance.is_displayed(), "Услуга авиа-перелёты не активна"
+
+    other_delay_transfer = WebDriverWait(driver, 5).until(
+        EC.visibility_of_element_located(css_sl.other_delay_transfer)
+    )
+    other_delay_transfer.is_displayed(), "Услуга авиа-перелёты не активна"
+
+    other_delay_bus = WebDriverWait(driver, 5).until(
+        EC.visibility_of_element_located(css_sl.other_delay_bus)
+    )
+    other_delay_bus.is_displayed(), "Услуга авиа-перелёты не активна"
+
+    other_delay_rent = WebDriverWait(driver, 5).until(
+        EC.visibility_of_element_located(css_sl.other_delay_rent)
+    )
+    other_delay_rent.is_displayed(), "Услуга авиа-перелёты не активна"
+
+
+@pytest.mark.sanity()
+def test_slider_train(driver):
+    driver.get(configuration.URL)
+    driver.execute_script("window.scrollBy(0,4475)")
+
+    comment_arrow = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable(css_sl.comment_arrowR)
+
+    )
+    assert comment_arrow.is_enabled(), "Шапка комментария не видна"
+    for i in range(3):
+        time.sleep(1)
+        comment_arrow.click()
+
+    comment_arrowL = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable(css_sl.comment_arrowL)
+    )
+    assert comment_arrowL.is_displayed(), "Навигационная стрелка не активна"
+    for i in range(3):
+        time.sleep(1)
+        comment_arrowL.click()
+
+    submit_button = WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable(css_sl.comment_button)
+    )
+    assert submit_button.is_enabled()\
+           and submit_button.is_displayed(), "Кнопка не активна либо не кликабльна"
+    methods.do_click(driver, css_sl.comment_button)
+
+
+
+
+
+
+
+
+
+
+
