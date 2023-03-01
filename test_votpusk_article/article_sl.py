@@ -1,0 +1,61 @@
+from selenium.webdriver.common.by import By
+
+title = (By.CSS_SELECTOR, '[class="promo__item-img promo__item-img_500"]')
+
+dropdown_country = (By.CSS_SELECTOR, '[aria-labelledby="select2-countries_list-container"]')
+dropdown_city = (By.XPATH, '//*[@id="search-article-form"]/div[2]/span/span[1]/span')
+dropdown_themes = (By.CSS_SELECTOR, '[aria-labelledby="select2-subjects_list-container"]')
+submit_button = (By.CSS_SELECTOR, '[type="submit"]')
+
+slid_themes = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[1]/div[1]/div')
+slid_topics = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[1]/div[2]/div/div/div[5]')
+slid_topics1 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[1]/div[2]/div/div/div[6]')
+slid_topics2 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[1]/div[2]/div/div/div[9]')
+slid_topics3 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[1]/div[2]/div/div/div[9]')
+slid_topics4 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[1]/div[2]/div/div/div[10]')
+slid_topics5 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[1]/div[2]/div/div/div[11]')
+slid_topics6 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[1]/div[2]/div/div/div[12]')
+
+slid_arrow_next = (By.CSS_SELECTOR, '[class="slider-btn news-topic__next slick-arrow"]')
+slid_arrow_prev = (By.CSS_SELECTOR, '[class="slider-btn news-topic__prev slick-arrow"]')
+
+news_paper1 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[3]/div/div[1]')
+read_more1 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[3]/div/div[1]/div[2]/a[3]')
+category1 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[3]/div/div[1]/div[1]/a[2]')
+news_paper2 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[3]/div/div[2]')
+category2 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[3]/div/div[2]/div[1]/a[2]')
+read_more2 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[3]/div/div[2]/div[2]/a[3]')
+news_paper3 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[3]/div/div[8]')
+category3 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[3]/div/div[7]/div[1]/a[2]')
+read_more3 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[3]/div/div[7]/div[2]/a[3]')
+news_paper4 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[3]/div/div[9]')
+category4 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[3]/div/div[8]/div[1]/a[2]')
+read_more4 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[3]/div/div[8]/div[2]/a[3]')
+
+news_slider_next = (By.CSS_SELECTOR, '[class="slider-btn news__next-btn"]')
+news_slider_prev = (By.CSS_SELECTOR, '[class="slider-btn news__prev-btn"]')
+
+articles = (By.CSS_SELECTOR, '[alt="Лучшие отели 5 звезд в центре Барселоны "]')
+articles1 = (By.CSS_SELECTOR, '[alt="15 лучших мини-отелей в Москве"]')
+arlicles3 = (By.CSS_SELECTOR, '[alt="Отели на Мальдивах с трансфером на катере"]')
+all_articles = (By.CSS_SELECTOR, '[class="popularity__slider-more popularity__slider-more_desktop"]')
+
+picture_story1 = (By.CSS_SELECTOR, 'alt="С Закинфа не с пустыми руками"')
+picture_story2 = (By.CSS_SELECTOR, '[alt="Рязань и Касимов: вперед в прошлое"]')
+picture_story3 = (By.CSS_SELECTOR, '[alt="Санкт-Петербург и его новые центры притяжения"]')
+picture_story4 = (By.CSS_SELECTOR, '[alt="Кавказ. На Земле есть место, где тебе хорошо."]')
+picture_arrow_next = (By.CSS_SELECTOR, '[class="slider-btn slick-arrow"]')
+picture_arrow_prev = (By.ID, 'sub-prev')
+
+new_attract = (By.CSS_SELECTOR, '[class="landmarks__inner-item swiper-slide swiper-slide-active"]')
+new_attract1 = (By.CSS_SELECTOR, '[class="landmarks__inner-item swiper-slide swiper-slide-next"]')
+new_attract2 = (By.XPATH, '//*[@id="page-header"]/section[6]/div/div/div[2]/div/div[5]')
+new_attract3 = (By.XPATH, '//*[@id="page-header"]/section[6]/div/div/div[2]/div/div[6]')
+attract_arrow_next = (By.CSS_SELECTOR, '[class="slider-btn landmarks__next-btn"]')
+attract_arrow_prev = (By.CSS_SELECTOR, '[class="slider-btn landmarks__prev-btn"]')
+
+topic_container = (By.CSS_SELECTOR, '[class="topic__block"]')
+service_container = (By.CSS_SELECTOR, '[class="else"]')
+link_articles = (By.XPATH, '//*[@id="page-header"]/section[8]/div/div/div/div[1]/div[2]/a')
+sub_container_comments = (By.XPATH, '//*[@id="page-header"]/section[9]/div/div')
+show_more = (By.XPATH, '//*[@id="page-header"]/section[9]/div/div/div[2]/button[1]')

@@ -489,9 +489,9 @@ def test_sliders_article(driver):
                 action.send_keys(Keys.ENTER).perform()
                 enter_pressed = True
                 break
-        if enter_pressed:
-            country_container.send_keys(Keys.ESCAPE)
-    except:
+            if enter_pressed:
+                country_container.send_keys(Keys.ESCAPE)
+    finally:
         city_container = WebDriverWait(driver, 5).until(
             EC.element_to_be_clickable(css_sl.city_container)
         )
@@ -512,7 +512,7 @@ def test_sliders_article(driver):
                     break
             if enter_pressed:
                 city_container.send_keys(Keys.ESCAPE)
-        except:
+        finally:
             theme_container = WebDriverWait(driver, 5).until(
                 EC.element_to_be_clickable(css_sl.theme_container)
             )
