@@ -766,13 +766,3 @@ def test_slider_train(driver):
            and submit_button.is_displayed(), "Кнопка не активна либо не кликабльна"
     methods.do_click(driver, css_sl.comment_button)
 
-
-
-
-
-
-
-
-
-
-
