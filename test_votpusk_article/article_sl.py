@@ -35,9 +35,11 @@ read_more4 = (By.XPATH, '//*[@id="page-header"]/section[3]/div/div/div[3]/div/di
 news_slider_next = (By.CSS_SELECTOR, '[class="slider-btn news__next-btn"]')
 news_slider_prev = (By.CSS_SELECTOR, '[class="slider-btn news__prev-btn"]')
 
-articles = (By.CSS_SELECTOR, '[alt="Лучшие отели 5 звезд в центре Барселоны "]')
-articles1 = (By.CSS_SELECTOR, '[alt="15 лучших мини-отелей в Москве"]')
-arlicles3 = (By.CSS_SELECTOR, '[alt="Отели на Мальдивах с трансфером на катере"]')
+articles1 = (By.CSS_SELECTOR, '[alt="Лучшие отели 5 звезд в центре Барселоны "]')
+articles2 = (By.CSS_SELECTOR, '[alt="15 лучших мини-отелей в Москве"]')
+articles3 = (By.CSS_SELECTOR, '[alt="Отели на Мальдивах с трансфером на катере"]')
+articles_arrow_next = (By.CSS_SELECTOR, '[class="slider-btn popularity__next-btn"]')
+articles_arrow_prev = (By.CSS_SELECTOR, '[class="slider-btn popularity__prev-btn"]')
 all_articles = (By.CSS_SELECTOR, '[class="popularity__slider-more popularity__slider-more_desktop"]')
 
 picture_story1 = (By.CSS_SELECTOR, 'alt="С Закинфа не с пустыми руками"')

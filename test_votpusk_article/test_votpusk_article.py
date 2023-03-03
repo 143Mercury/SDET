@@ -104,7 +104,7 @@ def test_form_random(driver):
 
 
 @pytest.mark.sanity()
-def test_form_random(driver):
+def test_assert_themes(driver):
     driver.get(configurations.URL)
     driver.execute_script("window.scrollBy(0, 200)")
 
@@ -161,10 +161,9 @@ def test_form_random(driver):
 
 
 @pytest.mark.sanity()
-def test_form_random(driver):
+def test_assert_news(driver):
     driver.get(configurations.URL)
-    driver.execute_script("window.scrollBy(0, 600)")
-    time.sleep(3)
+    driver.execute_script("window.scrollBy(0, 650)")
     prev_arrow = WebDriverWait(driver, 3).until(
         EC.element_to_be_clickable(article_sl.news_slider_prev)
     )
@@ -208,5 +207,13 @@ def test_form_random(driver):
             assert category.is_enabled(), f"Блок {i}не действителен"
 
 
+@pytest.mark.sanity()
+def test_assert_news(driver):
+    driver.get(configurations.URL)
+    driver.execute_script("window.scrollBy(0, 1150)")
 
+    checking_container = WebDriverWait(driver, 10).until(
+        EC.visibility_of_element_located(article_sl.all_articles)
+    )
+    assert checking_container.is_enabled(), "Контейнер недоступен"
 
