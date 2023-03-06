@@ -1,4 +1,5 @@
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
@@ -85,3 +86,12 @@ def wait_until_element_loaded(driver, locator, timeout=20):
         assert element.is_displayed(), f"Элемент {locator} не виден на странице"
     except TimeoutException:
         assert False, f"Элемент {locator} не найден на странице после {timeout} секунд ожидания"
+
+
+def find_element(driver, by_selector):
+    element = None
+    try:
+        element = driver.find_element_by_css_selector(by_selector)
+    except:
+        pass
+    return element

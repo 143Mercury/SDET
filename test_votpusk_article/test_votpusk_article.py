@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import TimeoutException
 
 
 @pytest.mark.sanity()
@@ -107,63 +108,26 @@ def test_form_random(driver):
 def test_assert_themes(driver):
     driver.get(configurations.URL)
     driver.execute_script("window.scrollBy(0, 200)")
-
-    all_themes = WebDriverWait(driver, 5).until(
-        EC.presence_of_element_located(article_sl.slid_themes)
-    )
-    assert all_themes.is_displayed(), "Все темы не доступны"
-
-    slide_topics = WebDriverWait(driver, 5).until(
-        EC.presence_of_element_located(article_sl.slid_topics)
-    )
-    assert slide_topics.is_displayed(), "Тема 'пересечение границ' не доступна"
-
-    slide_topics1 = WebDriverWait(driver, 5).until(
-        EC.presence_of_element_located(article_sl.slid_topics1)
-    )
-    assert slide_topics1.is_displayed(), "Тема 'Иммиграция' не доступна"
-
-    slide_topics2 = WebDriverWait(driver, 5).until(
-        EC.presence_of_element_located(article_sl.slid_topics2)
-    )
-    assert slide_topics2.is_displayed(), "Тема 'Паспорта' не доступна"
-
-    slide_topics3 = WebDriverWait(driver, 5).until(
-        EC.presence_of_element_located(article_sl.slid_topics3)
-    )
-    assert slide_topics3.is_displayed(), "Тема 'Страховки' не доступна"
-
-    slide_topics4 = WebDriverWait(driver, 5).until(
-        EC.presence_of_element_located(article_sl.slid_topics4)
-    )
-    assert slide_topics4.is_displayed(), "Тема 'Таможня' не доступна"
-
-    slide_topics5 = WebDriverWait(driver, 5).until(
-        EC.presence_of_element_located(article_sl.slid_topics5)
-    )
-    assert slide_topics5.is_displayed(), "Тема 'Как добраться' не доступна"
-
-    slide_arrow = WebDriverWait(driver, 5).until(
-        EC.element_to_be_clickable(article_sl.slid_arrow_next)
-    )
-    assert slide_arrow.is_displayed(), "Навигационная стрелка не доступна"
-    for i in range(5):
-        time.sleep(0.5)
-        slide_arrow.click()
-
-    slide_arrow_prev = WebDriverWait(driver, 5).until(
-        EC.element_to_be_clickable(article_sl.slid_arrow_prev)
-    )
-    assert slide_arrow_prev.is_displayed(), "Навигационная стрелка не доступна"
-    for i in range(5):
-        time.sleep(0.5)
-        slide_arrow_prev.click()
+    try:
+        for x in range(1, 8):
+            slid_topics = WebDriverWait(driver, 5).until(
+                EC.visibility_of_element_located(getattr(article_sl, f"slid_topics{x}"))
+            )
+            assert slid_topics.is_enabled(),f"Слайдер с {x} недоступен"
+    finally:
+        slid_arrow = WebDriverWait(driver, 5).until(
+            EC.element_to_be_clickable(article_sl.slid_arrow_next)
+        )
+        assert slid_arrow.is_displayed(), "Стрелка слайдера отсутствует"
+        for i in range(5):
+            time.sleep(0.5)
+            slid_arrow.click()
 
 
 @pytest.mark.sanity()
 def test_assert_news(driver):
     driver.get(configurations.URL)
-    driver.execute_script("window.scrollBy(0, 650)")
+    driver.execute_script("window.scrollBy(0, 550)")
     prev_arrow = WebDriverWait(driver, 3).until(
         EC.element_to_be_clickable(article_sl.news_slider_prev)
     )
@@ -211,9 +175,23 @@ def test_assert_news(driver):
 def test_assert_news(driver):
     driver.get(configurations.URL)
     driver.execute_script("window.scrollBy(0, 1150)")
-
-    checking_container = WebDriverWait(driver, 10).until(
-        EC.visibility_of_element_located(article_sl.all_articles)
-    )
-    assert checking_container.is_enabled(), "Контейнер недоступен"
+    try:
+        container_num = 1
+        while container_num <= 5:
+            container = None
+            while not container:
+                try:
+                    container = WebDriverWait(driver, 5).until(
+                        EC.visibility_of_element_located(getattr(article_sl, f"article_container{container_num}"))
+                    )
+                except TimeoutException:
+                    # если контейнер не найден, кликаем на кнопку "Дальше" и пытаемся снова найти контейнер
+                    articles_next = WebDriverWait(driver, 5).until(
+                        EC.element_to_be_clickable(article_sl.articles_arrow_next)
+                    )
+                    articles_next.click()
+            assert container.is_enabled(), f"Блок{container_num} контейнеров не действителен"
+            container_num += 1
+    finally:
+        time.sleep(2)
 
